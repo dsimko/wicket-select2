@@ -18,7 +18,8 @@ import java.io.OutputStreamWriter;
 import org.apache.wicket.IResourceListener;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.IEvent;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.IRequestParameters;
@@ -123,7 +124,7 @@ abstract class AbstractSelect2Choice<T, M> extends HiddenField<M> implements IRe
 
 	// initialize select2
 
-	response.renderOnDomReadyJavaScript(JQuery.execute("$('#%s').select2(%s);", getMarkupId(), settings.toJson()));
+	response.render(OnDomReadyHeaderItem.forScript(JQuery.execute("$('#%s').select2(%s);", getMarkupId(), settings.toJson())));
 
 	// select current value
 

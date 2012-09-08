@@ -47,7 +47,7 @@ public class HomePage extends WebPage {
 
 	Select2Choice<Country> country = new Select2Choice<Country>("country", new PropertyModel<Country>(this,
 		"country"), new CountriesProvider());
-	country.getSettings().setMinimumInputLength(1);
+	//country.getSettings().setMinimumInputLength(1);
 	form.add(country);
 
 	// multi-select example
@@ -111,7 +111,7 @@ public class HomePage extends WebPage {
 
 	@Override
 	protected String getDisplayText(Country choice) {
-	    return choice.getDisplayName();
+	    return "<table><tr><td><img src='http://www.seznam.cz/st/img/2011//logo.png' /></td><td>" + choice.getDisplayName()+"</td></tr></table>";
 	}
 
 	@Override
